@@ -234,6 +234,7 @@ namespace winform_pagination
                 label.Padding = new Padding(1);
                 label.Margin = btnNext.Margin;
                 label.Width = 75;
+                label.Tag = null;
 
                 pagingPanel.Controls.Add(label);
             }
@@ -256,7 +257,7 @@ namespace winform_pagination
             /*
              * JUST IN CASE... HAHA XD
              */
-            if (pagingPanel.Controls.OfType<Label>().Any())
+            if (pagingPanel.Controls.OfType<Label>().Where(x => x.Tag == null).Any())
             {
                 var labels = pagingPanel.Controls.OfType<Label>().ToList();
                 labels.ForEach(x =>
@@ -283,7 +284,11 @@ namespace winform_pagination
                                                                 {
                                                                     x.LinkBehavior = LinkBehavior.HoverUnderline;
                                                                 });
-                        return;
+                        //In case there is already pages drawed, we skip
+                        if (pagingPanel.Controls.Count == CountShowPages || pagingPanel.Controls.Count == CountPage)
+                        {
+                            return;
+                        }
                     }
                 }
             }
@@ -322,6 +327,7 @@ namespace winform_pagination
                         else if (i == mid - 1 || i == CountShowPages - 1)
                         {
                             linkLabel.Text = dots;
+                            linkLabel.Tag = dots;
                         }
                         else if (i == mid)
                         {
@@ -346,6 +352,7 @@ namespace winform_pagination
                         else if (i == mid)
                         {
                             linkLabel.Text = dots;
+                            linkLabel.Tag = dots;
                         }
                         else if (i > mid)
                         {
