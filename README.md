@@ -9,4 +9,4 @@ I create this control with 2 mode of show the paging:
 
 <b>Note</b>: If you are going to deal with large database I would recommend you to use <b>ShowOnlyPageNumber</b>, since you don't need to count how many page that you will need control to reserve and draw if you use <b>ShowPages</b>.
 
-<b>PS:</b> I hope you can use this for you project if it fit, or you can use some of my solution to make something even better your own :D
+<b>PS:</b> You can download the project then run to test and play around by yourself; I hope you can use this for you project if it fit, or you can use some of my solution to make something even better your own :D
